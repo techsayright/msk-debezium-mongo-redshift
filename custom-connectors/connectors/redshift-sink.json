@@ -1,0 +1,25 @@
+{
+  "name": "redshift-sink",
+  "config": {
+    "confluent.topic.bootstrap.servers": "b-1.democluster2.sp3ctd.c2.kafka.us-east-1.amazonaws.com:9096,b-3.democluster2.sp3ctd.c2.kafka.us-east-1.amazonaws.com:9096,b-2.democluster2.sp3ctd.c2.kafka.us-east-1.amazonaws.com:9096",
+    "confluent.topic.consumer.security.protocol": "SASL_SSL",
+    "confluent.topic.consumer.sasl.mechanism": "SCRAM-SHA-512",
+    "confluent.topic.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"darsh\" password=\"darsh-secret\";",
+    "confluent.topic.producer.security.protocol": "SASL_SSL",
+    "confluent.topic.producer.sasl.mechanism": "SCRAM-SHA-512",
+    "confluent.topic.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"darsh\" password=\"darsh-secret\";",
+    "connector.class": "io.confluent.connect.aws.redshift.RedshiftSinkConnector",
+    "confluent.topic.replication.factor": "1",
+    "tasks.max": "1",
+    "topics": "demo.class.class_boost",
+    "aws.redshift.domain": "redshift-cluster-1.c3et5yekaq9u.us-east-1.redshift.amazonaws.com",
+    "aws.redshift.port": "5439",
+    "aws.redshift.database": "demo",
+    "aws.redshift.user": "awsuser",
+    "aws.redshift.password": "darshPass1",
+    "auto.create": "true",
+    "pk.mode": "kafka",
+    "key.converter.schemas.enable": false,
+    "value.converter.schemas.enable": true
+  }
+}

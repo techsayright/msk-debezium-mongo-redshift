@@ -1,0 +1,32 @@
+{
+  "name": "mongo-source",
+  "config": {
+    "connector.class": "io.debezium.connector.mongodb.MongoDbConnector",
+    "mongodb.name": "demo",
+    "topic.prefix": "demo",
+    "poll.interval.ms": 1000,
+    "mongodb.user": "prod-test",
+    "mongodb.password": "gBubF8IZojsCWhDT53LTSeT",
+    "mongodb.authsource": "admin",
+    "mongodb.hosts": "mongodb://prod-test:gBubF8IZojsCWhDT53LTSeT@globalplay-cluster-prep-shard-00-00.zihzn.mongodb.net:27017,globalplay-cluster-prep-shard-00-01.zihzn.mongodb.net:27017,globalplay-cluster-prep-shard-00-02.zihzn.mongodb.net:27017/?ssl=true&replicaSet=atlas-1089ad-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "mongodb.ssl.enabled": true,
+    "mongodb.members.auto.discover": true,
+    "collection.include.list": "globalplay-prod-test.consumers",
+    "tasks.max": "1",
+    "value.converter.schemas.enable": false,
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": false,
+    "plugin.name": "wal2json",
+    "transforms": "mongoflatten",
+    "transforms.mongoflatten.type": "io.debezium.connector.mongodb.transforms.ExtractNewDocumentState",
+    "transforms.mongoflatten.array.encoding": "document",
+    "database.history.kafka.bootstrap.servers": "b-1.preprodmsk.oxkrbh.c3.kafka.us-east-1.amazonaws.com:9096,b-2.preprodmsk.oxkrbh.c3.kafka.us-east-1.amazonaws.com:9096,b-3.preprodmsk.oxkrbh.c3.kafka.us-east-1.amazonaws.com:9096",
+    "database.history.kafka.topic": "mongo-topic",
+    "database.history.consumer.security.protocol": "SASL_SSL",
+    "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
+    "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"aws\" password=\"awsPass1\";",
+    "database.history.producer.security.protocol": "SASL_SSL",
+    "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
+    "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"aws\" password=\"awsPass1\";"
+  }
+}
